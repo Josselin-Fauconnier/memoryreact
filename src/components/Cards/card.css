@@ -1,0 +1,114 @@
+
+.card {
+  width: 80px;
+  height: 80px;
+  perspective: 1000px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+  transform-style: preserve-3d;
+  border-radius: 8px;
+}
+
+.card.flipped .card-inner,
+.card.matched .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #333;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  background: #fff;
+  overflow: hidden;
+}
+
+.card-front {
+  background: linear-gradient(45deg, #3498db, #2980b9);
+}
+
+.card-back {
+  transform: rotateY(180deg);
+  background: #fff;
+}
+
+.card-image {
+  width: 90%;
+  height: 90%;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+.card.matched {
+  animation: matched-pulse 0.5s ease-in-out;
+}
+
+.card:hover:not(.flipped):not(.matched) {
+  transform: scale(1.05);
+  transition: transform 0.2s;
+}
+
+.card:active {
+  transform: scale(0.95);
+}
+
+@keyframes matched-pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* Gestion d'erreur d'image */
+.card-image:error {
+  display: none;
+}
+
+.card-front:has(.card-image:error)::after,
+.card-back:has(.card-image:error)::after {
+  content: '?';
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+}
+
+
+@media (max-width: 768px) {
+  .card {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+
+.card:focus {
+  outline: 3px solid #f39c12;
+  outline-offset: 2px;
+}
+
+
+.card-image {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
