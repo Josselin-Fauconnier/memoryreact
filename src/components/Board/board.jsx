@@ -1,4 +1,4 @@
-import Card from '../Card/card';
+import Card from '../Cards/card';
 import './board.css';
 
 const Board = ({ cards, onCardClick, pairCount }) => {
@@ -7,11 +7,10 @@ const Board = ({ cards, onCardClick, pairCount }) => {
     const totalCards = pairCount * 2;
     
   
+    if (totalCards <= 6) return 3;
     if (totalCards <= 8) return 4;
     if (totalCards <= 12) return 4;
-    if (totalCards <= 16) return 4;
-    if (totalCards <= 20) return 5;
-    return 6;
+    return 4;
   };
 
   const gridStyle = {
