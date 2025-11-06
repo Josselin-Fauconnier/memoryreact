@@ -73,18 +73,7 @@
   100% { transform: scale(1); }
 }
 
-/* Gestion d'erreur d'image */
-.card-image:error {
-  display: none;
-}
 
-.card-front:has(.card-image:error)::after,
-.card-back:has(.card-image:error)::after {
-  content: '?';
-  font-size: 24px;
-  font-weight: bold;
-  color: white;
-}
 
 
 @media (max-width: 768px) {
