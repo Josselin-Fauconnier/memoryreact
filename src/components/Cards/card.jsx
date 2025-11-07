@@ -20,10 +20,10 @@ const Card = ({ card, onClick }) => {
 
   const getCardImage = (value) => {
     const cardName = dinomorphiaCards[value - 1];
-    return `/images/cards/${cardName}.webp`;
+    return `./images/cards/${cardName}.webp`;
   };
 
-  const cardBackImage = '/images/cards/Dos.webp';
+  const cardBackImage = './images/cards/Dos.webp';
 
   return (
     <div
